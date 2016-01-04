@@ -1,0 +1,8 @@
+app/code/community/FME/Layerednav/	app/code/community/FME/Layerednav/
+app/design/frontend/base/default/layout/layerednav.xml	app/design/frontend/base/default/layout/layerednav.xml
+app/design/frontend/base/default/template/layerednav/	app/design/frontend/base/default/template/layerednav/
+app/design/frontend/rwd/default/layout/layerednav.xml	app/design/frontend/rwd/default/layout/layerednav.xml
+app/etc/modules/FME_Layerednav.xml	app/etc/modules/FME_Layerednav.xml
+skin/frontend/base/default/css/FME/	skin/frontend/base/default/css/FME/
+skin/frontend/base/default/images/FME/	skin/frontend/base/default/images/FME/
+skin/frontend/base/default/js/FME/	skin/frontend/base/default/js/FME/
