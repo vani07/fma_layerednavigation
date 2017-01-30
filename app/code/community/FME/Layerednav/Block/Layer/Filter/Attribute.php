@@ -179,10 +179,13 @@ class FME_Layerednav_Block_Layer_Filter_Attribute extends Mage_Catalog_Block_Lay
                     $_htmlFilters .= 'checked ';
                 }
 
+                $shortLabel = $_item->getLabel();
+                $shortLabel = strstr($shortLabel, '-', true) ?: $shortLabel;
+                
                 $_html = "";
                 $_html .= '<div class="checkboxattributewrapper">';
                 $_html .= '<input class="checkboxattribute" type="checkbox" id="'.$this->getHtmlId($_item).'" "'. $_htmlFilters .'" name="'.$this->getVar().'"/>';
-                $_html .= '<label for="' .$this->getHtmlId($_item). '">' . $_item->getLabel() . '</label>';
+                $_html .= '<label for="' .$this->getHtmlId($_item). '">' . $_item->$shortLabel() . '</label>';
                 $_html .= '</div>';
                 $_filtersArray[] = $_html;
             }
