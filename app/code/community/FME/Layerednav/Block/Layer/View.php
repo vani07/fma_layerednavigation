@@ -136,4 +136,8 @@ class FME_Layerednav_Block_Layer_View extends Mage_Catalog_Block_Layer_View {
         return $html;
     }
 
+    public function getIsSearch(){
+        return false;
+    }
+
 }

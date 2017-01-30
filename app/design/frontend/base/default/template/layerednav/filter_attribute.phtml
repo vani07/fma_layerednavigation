@@ -1,14 +1,46 @@
 <?php 
 
-
-$items        = $this->getFiltersArray();
-$displayStyle = $this->getColumnsNum(); 
+//$items        	= $this->getFiltersArray();
+$displayStyle 	= $this->getColumnsNum();
+$items			= $this->getFiltersAsOptions();
+$code			= $this->getCode();
 ?>
+<?php /*
 
-<ol>
+<ul>
 <?php if ($displayStyle <=1): // one column ?>
     <?php foreach ($items as $_item): ?>
         <li><?php echo $_item?></li>
     <?php endforeach ?>
 <?php endif ?>
-</ol>
+</ul>
+
+*/ ?>
+
+<?php if ($this->getCode() == 'color'): ?>
+	<div>
+		<?php if ($displayStyle <=1): // one column ?>
+		    <?php foreach ($items as $_item): ?>
+		        <?php echo $_item?>
+		    <?php endforeach ?>
+		<?php endif ?>
+	</div>
+<?php elseif ($this->getCode() == 'condition'): ?>
+	<?php foreach ($items as $_item): ?>
+        <?php echo 	$_item ?>
+    <?php endforeach ?>
+<?php else : ?>
+<select class="filter_dropdown fme_layered_attribute_dropdown" id="select-<?= $code ?>" data-placeholder="Search for <?= $this->getName() ?>" multiple>
+	<?php foreach ($items as $_item): ?>
+        <?php echo 	$_item ?>
+    <?php endforeach ?>
+</select>
+
+<?php endif; ?>
+
+<?php 
+//	#1	rubah isi fme_layered_attribute_dropdown_listener di js, dapetin varname sama valuenya	
+//	#2	kirim by ajax kayak fungsi lainnya
+//	#3	kalo di delete, update juga
+//	#4	klo di clear, update juga
+ ?>

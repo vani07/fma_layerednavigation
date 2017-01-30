@@ -44,7 +44,7 @@ class FME_Layerednav_FrontController extends Mage_Core_Controller_Front_Action {
         $response['category']=Mage::helper('layerednav')->getcategorydate($category1);
         $response['layer'] = $this->getLayout()->getBlock('layer')->toHtml();
         $response['products'] = $this->getLayout()->getBlock('root')->toHtml();
-
+        
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($response));
         
         

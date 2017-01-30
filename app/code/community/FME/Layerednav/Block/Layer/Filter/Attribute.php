@@ -111,11 +111,104 @@ class FME_Layerednav_Block_Layer_Filter_Attribute extends Mage_Catalog_Block_Lay
             if ($this->getName() == "Color") {
                 $_filtersArray[] = $_html;
             } else {
-                $_filtersArray[] = '<div class="color"><a ' . $_htmlFilters . '>' . $_item->getLabel() . '</a><span>' . $qty.'</span></div>';
+                $_filtersArray[] = '<div class=""><a ' . $_htmlFilters . '>' . $_item->getLabel() . '</a><span>' . $qty.'</span></div>';
             }
         }
+
+
 
         return $_filtersArray;
     }
 
+    public function getFiltersAsOptions() {
+
+        $_filterOptions = array();
+        $hideLinks = Mage::getStoreConfig('layerednav/layerednav/remove_links');
+        //Get all filter items  ( use getItems method of Mage_Catalog_Model_Layer_Filter_Abstract )
+        foreach ($this->getItems() as $_item) {
+
+            $showSwatches = Mage::getStoreConfig('layerednav/layerednav/show_swatches');
+            $_htmlFilters = 'id="' . $this->getHtmlId($_item) . '" ';
+            $var_href = "#";
+
+            //Create URL
+            $var_href = html_entity_decode($currentUrl = Mage::app()->getRequest()->getBaseUrl() . Mage::getSingleton('core/session')->getRequestPath());
+
+            $_htmlFilters .= 'class="fme_layered_attribute '
+                    . ($this->Selectedfilter($_item) ? 'fme_layered_attribute_selected' : '') . '" ';
+
+            //Check the number of products against filter
+            $qty =    $_item->getCount();
+            if (!$this->getHideQty())
+                $qty =    '('.$_item->getCount().')';
+
+
+            if ($this->getVar() == "color") {
+                $_htmlFilters .= 'href="' . $var_href . '" ';
+                if ($showSwatches == "iconslinks") {
+
+                    $iconCode = Mage::helper('layerednav')->checkColor($_item->getLabel());
+                    
+
+                    $_html = "";
+                    $_html .= '<div class="color">
+                                        <a ' . $_htmlFilters . '><div class="color_box '.(($isMulti)?'multi_color':'').'" style="background-color:' . $iconCode . ';"></div>
+                                        ' . $_item->getLabel() . '</a><span>' . $qty . '</span>
+                                </div>';
+                } elseif ($showSwatches == "icons") {
+
+                    $iconCode = Mage::helper('layerednav')->checkColor($_item->getLabel());
+                    $isMulti = ($_item->getLabel() == 'Multi')?true:false;
+
+                    $_html = "";
+                    $_html .= '<div class="color">
+                                        <a ' . $_htmlFilters . '><div class="color_box '.(($isMulti)?'multi_color':'').'" style="background-color:' . $iconCode . ';" title="' . $_item->getLabel() . '"></div>
+                                        </a>
+                                </div>';
+                } else {
+
+                    $_html = "";
+                    $_html .= '<div class="color"><a ' . $_htmlFilters . '>' . $_item->getLabel() . '</a><span>' . $qty . '</span></div>';
+                }
+
+                $_filtersArray[] = $_html;
+            }
+            else if ($this->getVar() == "condition"){
+                $_htmlFilters = 'value="' . $this->getHtmlId($_item) . '" ';
+                if ($this->Selectedfilter($_item)) { 
+                    $_htmlFilters .= 'checked ';
+                }
+
+                $_html = "";
+                $_html .= '<div class="checkboxattributewrapper">';
+                $_html .= '<input class="checkboxattribute" type="checkbox" id="'.$this->getHtmlId($_item).'" "'. $_htmlFilters .'" name="'.$this->getVar().'"/>';
+                $_html .= '<label for="' .$this->getHtmlId($_item). '">' . $_item->getLabel() . '</label>';
+                $_html .= '</div>';
+                $_filtersArray[] = $_html;
+            }
+            else {
+                $_htmlFilters = 'value="' . $this->getHtmlId($_item) . '" ';
+                if ($this->Selectedfilter($_item)) { 
+                    $_htmlFilters .= 'selected ';
+                }
+                $_filtersArray[] = '<option '.$_htmlFilters.'>'. $_item->getLabel().'</option>';
+            }
+
+        }
+
+
+
+        return $_filtersArray;
+    }
+
+    public function isColor(){
+        if ($this->getName() == 'Color'){
+            return true;
+        }
+        else {return false;}
+    }
+
+    public function getCode(){
+        return $this->getVar();
+    }
 }

@@ -32,7 +32,7 @@
 			$secondOffset = 0;
     }
 ?>
-<ol>
+<ul>
     <li class="price-container">
 <?php if ($to != $from) :?> 
 <div id="fme_layered_price_slider<?php echo $this->_filter->getRequestVar()?>" class="price_slider">
@@ -44,7 +44,7 @@
 <?php if ($to != $from) :?> 
     <div>
 <?php echo $this->__('Range:')?> 
-<?php echo $this->getSymbol()?><span id="price_range_from<?php echo $this->_filter->getRequestVar()?>"><?php echo $from?></span>-<?php echo $this->getSymbol()?><span id="price_range_to<?php echo $this->_filter->getRequestVar()?>"><?php echo $to?></span></div>
+<?php echo $this->getSymbol()?><span id="price_range_from<?php echo $this->_filter->getRequestVar()?>"><?php echo $from?></span> - <?php echo $this->getSymbol()?><span id="price_range_to<?php echo $this->_filter->getRequestVar()?>"><?php echo $to?></span></div>
 <script type="text/javascript">
     var slider = create_price_slider(<?php echo $width.', '.$firstOffset.', '.$secondOffset.', '.$min.', '.$max.',"'.$this->_filter->getRequestVar()?>");
 window.onresize = function() {
@@ -58,4 +58,4 @@ window.onresize = function() {
 <?php echo $this->getSymbol()?><span id="price_range_from<?php echo $this->_filter->getRequestVar()?>"><?php echo $from?></span>
 <?php endif;?> 
     </li>
-</ol>
+</ul>

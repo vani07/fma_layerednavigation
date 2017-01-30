@@ -95,7 +95,7 @@ class FME_Layerednav_Helper_Data extends Mage_Core_Helper_Abstract {
 
         $html = str_replace('onchange="setLocation', 'onchange="catalog_toolbar_make_request', $html);
 
-        $loaderHtml = '<div class="fme_loading_filters" style="display:none"><img id="loading-image" src="' . Mage::getDesign()->getSkinUrl('images/FME/ajax-loader.gif') . '" /></div>';
+        $loaderHtml = '<div class="fme_loading_filters" style="display:none"><div class="fme_loading_filters_overlay"></div><img id="loading-image" src="' . Mage::getDesign()->getSkinUrl('images/FME/spin.svg') . '" /></div>';
         $html .= $loaderHtml;
 
         if (Mage::app()->getRequest()->isXmlHttpRequest()) {
@@ -191,10 +191,11 @@ class FME_Layerednav_Helper_Data extends Mage_Core_Helper_Abstract {
             $sessionObject->setAdjNavCurrencyRate($nCurrentCurrencyRate);
             $sessionObject->setAdjNavPriceStyle($nCurrentPriceStyle);
 
-          $query = Mage::app()->getRequest()->getQuery();
+            $query = Mage::app()->getRequest()->getQuery();
             $sess = (array) $sessionObject->getAdjNav();
 
-            $this->_params = array_merge($sess, $query);
+            //$this->_params = array_merge($sess, $query);
+            $this->_params = $query;
 
             if (!empty($query['clearall']) OR $bNeedClearAll) { 
                 $this->_params = array();
@@ -435,7 +436,13 @@ class FME_Layerednav_Helper_Data extends Mage_Core_Helper_Abstract {
             'White' => '#FFFFFF',
             'WhiteSmoke' => '#F5F5F5',
             'Yellow' => '#FFFF00',
-            'YellowGreen' => '#9ACD32');
+            'YellowGreen' => '#9ACD32',
+            'Bronze'      => '#CD7F32',
+            'Cream'     => '#FCFBE3',
+            'DarkPurple' => '#871F78',
+            'Peach'     => '#FFE5B4',
+            'Tosca'     => '#2ED1A2'
+            );
 
          $colorArr = unserialize(strtolower(serialize($colorArray)));
 

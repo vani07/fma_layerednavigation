@@ -1,4 +1,4 @@
-<ol>
+<ul>
 <?php 
     $items = $this->getItems(); 
     list($from, $to) = explode(',', $items[0]->getValueString());
@@ -26,5 +26,5 @@ onclick="if(this.value==this.name) this.value='';" name="<?php echo $this->__('T
 <button type="button" class="button" id="price_button_go---<?php echo $this->_filter->getRequestVar()?>"><span><?php echo $this->__('Go')?></span></button>
 
 </li>
-</ol>
+</ul>
 <input type="hidden" value="<?php echo $this->_filter->getRequestVar()?>" class="price-input">

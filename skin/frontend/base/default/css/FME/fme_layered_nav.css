@@ -20,17 +20,21 @@ div.fme-filter input.fme_layered_disabled {background-color:gray; border:1px sol
 
 div.fme-filter a.fme_layered_clear {float: right; cursor:pointer;} 
 
-div.price_slider { position:relative; z-index:9; height:28px; margin:0 8% 5px auto; background:url(../../images/FME/orange_bar.jpg) repeat-x 50% 50%; width: 80%; cursor:pointer; }
+/*div.price_slider { position:relative; z-index:9; height:28px; margin:0 8% 5px auto; background:url(../../images/FME/orange_bar.jpg) repeat-x 50% 50%; width: 80%; cursor:pointer; }
 div.price_slider div.handle { top:3px; width:14px; height:23px; background: transparent url(../../images/FME/slider_button.png) no-repeat; cursor:move; position: absolute; }
+*/
+
+
+
 
 #adj-nav-container, div.adj-nav {position:relative}
 
-.fme_loading_filters{
+.fme_loading_filters .fme_loading_filters_overlay{
     width:100%;
     height:1000%;
-    background-color:#D8D8D8;
-    z-index:500;
-    opacity: 0.4;
+    background-color:#212121;
+    z-index:10000;
+    opacity: 0.3;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=60);
     position:absolute;
     top:0;
@@ -44,18 +48,17 @@ div.price_slider div.handle { top:3px; width:14px; height:23px; background: tran
     
 }
 #fme_filters_list{
-   border-color: #cccccc;
-    border-style: solid;
-    border-width: 1px;
-    margin: 0;
-    padding: 0;  
+
 }
+
+
 .fme_loading_filters img{
 	left:48%;
 	top:45%;
 	display:block;
 	position:fixed;
 	z-index:900;
+    opacity:1;
 }
 
 .fme_layered_clear_all {
@@ -70,25 +73,22 @@ div.price_slider div.handle { top:3px; width:14px; height:23px; background: tran
     text-align:center;
 } 
 
+
 .fme-filter dt{
-cursor:pointer;
--moz-user-select: none;
-    background-color: #f4f4f4;
-    border-color: #cccccc;
-    border-style: solid;
-    border-width: 1px;
-    color: #636363;
     display: block;
-    font-family: "Raleway","Helvetica Neue",Verdana,Arial,sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1.4;
-    margin: 0;
-    padding: 7px 10px 7px 24px;
+    margin-top: 1px;
     position: relative;
-    text-rendering: optimizespeed;
-    text-transform: uppercase;
+    padding: 7px 0;
+    font-weight: bold;
+    text-rendering: optimizeSpeed;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    border-bottom: solid .5px #E0E0E0;
+    margin-bottom: 10px;
+    font-weight: 800;
 }
 div.fme-filter dd {
     padding: 2px;
@@ -98,7 +98,7 @@ div.fme-filter dd {
 
 div.fme-filter dd li{overflow:hidden;}
 
-
+/*
 .color {  clear:both; margin:6px 0 6px 0; width: 100% ; }
 
 .color .color_box { width:17px; height:17px; float:left; display:block; border:1px solid #f4f4f4; margin-right:4px; }
@@ -109,4 +109,116 @@ div.fme-filter dd li{overflow:hidden;}
 
 .color span { font-family:Arial; text-align: left; font-size:12px; color:#999; margin-top: -3px; }
 div.fme-filter dd a:hover { color:#09F; text-decoration:none; }
+div.fme-filter dd a { font-family:Arial; font-size:12px; color:#333; text-decoration:none; }*/
+
+.block-layered-nav .fme_layered_clear_all {
+    background-color: transparent;
+    border-bottom: 0;
+    padding:0;
+}
+
+#catalog-filters .selectize-control.multi .selectize-input > div {
+    cursor: pointer;
+    margin: 0 5px 3px 0;
+    padding: 2px 6px;
+    background: #333;
+    color: #ffffff;
+    border: 0;
+}
+
+#catalog-filters .selectize-control.multi .selectize-input [data-value]{
+    text-shadow: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background: none;
+    background-color: #333;
+    background-image: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    position: relative;
+}
+
+#catalog-filters .selectize-control.multi .selectize-input [data-value]:hover{
+    background-color:#f45482;
+}
+
+div.price_slider {
+    position: relative;
+    z-index: 9;
+    height: 10px;
+    padding-top: 0px;
+    border-bottom: 3px solid #333;
+    margin: 0 2% 18px auto;
+    /* background: url(../../images/FME/orange_bar.jpg) repeat-x 50% 50%; */
+    width: 90%;
+    cursor: pointer;
+}
+
+div.price_slider div.handle {
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 30%;
+    background: white;
+    border: 1px solid #999;
+    cursor: move;
+    position: absolute;
+    box-shadow: 0 0 6px -3px #333;
+}
+
+
+div.fme-filter a.fme_layered_attribute{padding:0;background:none;}
+
+.color {
+    clear: none;
+    margin: 0 1px;
+    display: inline-block;
+}
+
+.color .color_box { width: 25px;
+    height: 25px;
+    float: left;
+    display: block;
+    box-sizing: border-box;
+    border: 1px solid #f4f4f4;
+    margin-right: 0;
+    border-radius: 5px;
+}
+
+.color a { font-family:Arial; font-size:12px; color:#333; text-decoration:none; }
+
+.color a:hover { color:#09F; text-decoration:none; }
+
+.color span { font-family:Arial; text-align: left; font-size:12px; color:#999; margin-top: -3px; }
+div.fme-filter dd a:hover { color:#09F; text-decoration:none; }
 div.fme-filter dd a { font-family:Arial; font-size:12px; color:#333; text-decoration:none; }
+.multi_color{background-image:url('img/multi_color_box.png');background-size:100%;}
+
+.color .color_box:hover {
+    border: 1px solid #aaa;
+    box-shadow: 0 0 8px -3px #333;
+}
+
+.color .fme_layered_attribute_selected .color_box {
+    border: 2px solid red;
+}
+.checkboxattributewrapper{display: inline-block}
+.checkboxattribute {display:none;}
+.checkboxattribute + label {
+    border: 1px solid #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor:pointer;
+}
+
+.checkboxattribute + label:hover, .checkboxattribute:checked ~ label {
+    background-color: #333;
+    color: white;
+}
+
+div.fme-filter div.fme_layered_clear {
+    display:inline-block;
+    font-weight: normal;
+    font-size: 0.8em;
+}

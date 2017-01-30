@@ -33,12 +33,17 @@ class FME_Layerednav_Block_Search_Layer extends FME_Layerednav_Block_Layer_View 
     }
 
     protected function createCategoriesBlock() {
-
         $categoryBlock = $this->getLayout()
                 ->createBlock('layerednav/layer_filter_categorysearch')
                 ->setLayer($this->getLayer())
                 ->init();
         $this->setChild('category_filter', $categoryBlock);
     }
+
+    public function getIsSearch(){
+        return true;
+    }
+
+
 
 }

@@ -50,9 +50,8 @@
     <reference name="head">
         <action method="addCss"><stylesheet>css/FME/fme_layered_nav.css</stylesheet></action>
         <action method="addItem"><type>skin_js</type><name>js/FME/fme_layered_nav.js</name></action>
-        <action method="addItem"><type>skin_js</type><name>js/FME/jquery.min.js</name></action>
-        <action method="addItem"><type>skin_js</type><name>js/FME/noconflict.js</name></action>
-        
+        <action method="addCss"><stylesheet>marketplace/css/selectize.default.css</stylesheet></action>
+        <action method="addItem"><type>skin_js</type><name>marketplace/js/selectize.min.js</name></action>
     </reference>
     <reference name="left">
             
@@ -66,7 +65,9 @@
    <remove name="catalogsearch.leftnav"/>
     <reference name="head">
         <action method="addCss"><stylesheet>css/FME/fme_layered_nav.css</stylesheet></action>
-         <action method="addItem"><type>skin_js</type><name>/js/FME/fme_layered_nav.js</name></action>
+        <action method="addItem"><type>skin_js</type><name>js/FME/fme_layered_nav.js</name></action>
+        <action method="addCss"><stylesheet>marketplace/css/selectize.default.css</stylesheet></action>
+        <action method="addItem"><type>skin_js</type><name>marketplace/js/selectize.min.js</name></action>
     </reference>
     <reference name="left">
             <block type="layerednav/search_layer" name="catalogsearch.layerednav" after="currency" template="layerednav/layer.phtml"/>
