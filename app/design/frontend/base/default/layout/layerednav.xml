@@ -55,6 +55,7 @@
         <action method="addCss"><stylesheet>marketplace/css/selectize.default.css</stylesheet></action>
         
         <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-1.10.4.custom.min.js</name></action>
+        <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-touch.min.js</name></action>
         <action method="addCss"><stylesheet>jqueryui/jquery-ui-1.10.4.custom.min.css</stylesheet></action>
     </reference>
     <reference name="left">
@@ -75,6 +76,7 @@
         <action method="addCss"><stylesheet>marketplace/css/selectize.default.css</stylesheet></action>
         
         <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-1.10.4.custom.min.js</name></action>
+        <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-touch.min.js</name></action>
         <action method="addCss"><stylesheet>jqueryui/jquery-ui-1.10.4.custom.min.css</stylesheet></action>
         
         
