@@ -304,8 +304,8 @@ function catalog_toolbar_init()
 }
 
 function fme_layered_dt_listener(evt) {
-    var e = Event.findElement(evt, 'DT');
-    e.nextSiblings()[0].toggle();
+    //var e = Event.findElement(evt, 'DT');
+    //e.nextSiblings()[0].toggle();
     //e.toggleClassName('fme_layered_dt_selected');
 }
 
@@ -346,7 +346,7 @@ function price_input_listener(evt) {
 function fme_layered_init()
 { 
     var items, i, j, n,
-            classes = ['category', 'attribute', 'icon', 'price', 'clear', 'dt', 'clearall'];
+            classes = ['category', 'attribute', 'icon', 'price', 'clear', 'clearall'];
 
     for (j = 0; j < classes.length; ++j) {
         items = $('fme_filters_list').select('.fme_layered_' + classes[j]);
@@ -385,7 +385,7 @@ function create_price_slider(width, from, to, min_price, max_price, sKey)
     return new Control.Slider(price_slider.select('.handle'), price_slider, {
         range: $R(0, width),
         sliderValue: [from, to],
-        restricted: true,
+        restricted: false,
         onChange: function(values) {
             var f = calculateSliderPrice(width, from, to, min_price, max_price, values[0]),
                 t = calculateSliderPrice(width, from, to, min_price, max_price, values[1]);
@@ -401,6 +401,36 @@ function create_price_slider(width, from, to, min_price, max_price, sKey)
             $('price_range_from' + sKey).update(calculateSliderPrice(width, from, to, min_price, max_price, values[0]));
             $('price_range_to' + sKey).update(calculateSliderPrice(width, from, to, min_price, max_price, values[1]));
         }
+    });
+}
+
+function create_price_slider_ui(sKey,from,to,min,max){
+    jQuery('#fme_layered_price_sliderui_' + sKey).slider({
+        range:true,
+        min: min,
+        max: max ,
+        step: 10000,
+        values: [ from, to ],
+        create: function(event,ui){
+            $('price_range_from' + sKey).update(from);
+            $('price_range_to' + sKey).update(to);
+        },
+        slide: function(event,ui){
+            $('price_range_from' + sKey).update(ui.values[0]);
+            $('price_range_to' + sKey).update(ui.values[1]);
+        },
+        change: function( event, ui ) {
+            var f = ui.values[0],
+                t = ui.values[1];
+            
+            fme_layered_add_params(sKey, f + ',' + t, true);
+
+            $('price_range_from' + sKey).update(f);
+            $('price_range_to' + sKey).update(t);
+
+            fme_layered_make_request();
+        }
+
     });
 }
 

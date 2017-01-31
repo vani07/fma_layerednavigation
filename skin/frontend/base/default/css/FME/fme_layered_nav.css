@@ -44,7 +44,7 @@ div.price_slider div.handle { top:3px; width:14px; height:23px; background: tran
     display: none;
 }
 .price-container {
-    width: 200px;
+    width: 99%;
     
 }
 #fme_filters_list{
@@ -86,12 +86,13 @@ div.price_slider div.handle { top:3px; width:14px; height:23px; background: tran
     -webkit-user-select: none;
     -o-user-select: none;
     user-select: none;
-    border-bottom: solid .5px #E0E0E0;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     font-weight: 800;
 }
 div.fme-filter dd {
-    padding: 2px;
+    padding: 2px 2px 25px;
+    border-bottom: solid 1px #E0E0E0;
+    margin:0;
 }
 
 .fme-filter dt.fme_layered_dt_selected{}
@@ -130,7 +131,7 @@ div.fme-filter dd a { font-family:Arial; font-size:12px; color:#333; text-decora
     text-shadow: none;
     -webkit-border-radius: 0;
     -moz-border-radius: 0;
-    border-radius: 0;
+    border-radius: 3px;
     background: none;
     background-color: #333;
     background-image: none;
@@ -143,19 +144,21 @@ div.fme-filter dd a { font-family:Arial; font-size:12px; color:#333; text-decora
     background-color:#f45482;
 }
 
-div.price_slider {
+div.price_slider_ui {
     position: relative;
     z-index: 9;
     height: 10px;
     padding-top: 0px;
-    border-bottom: 3px solid #333;
-    margin: 0 2% 18px auto;
-    /* background: url(../../images/FME/orange_bar.jpg) repeat-x 50% 50%; */
-    width: 90%;
+    border:0;
+    border-bottom: 3px solid #888;
+    border-radius:0px;
+    margin: 0 2% 8px auto;
+    background:transparent;
+    width: 95%;
     cursor: pointer;
 }
 
-div.price_slider div.handle {
+div.price_slider_ui  a.ui-slider-handle {
     top: 3px;
     width: 16px;
     height: 16px;
@@ -165,19 +168,40 @@ div.price_slider div.handle {
     cursor: move;
     position: absolute;
     box-shadow: 0 0 6px -3px #333;
+    padding:0;
 }
 
+div.price_slider_ui .ui-slider-range {
+    height: 10px;
+    padding-top: 0px;
+    border:0;
+    border-bottom: 3px solid #212121;
+    border-radius:0px;
+    background:transparent;
+    cursor: pointer;
+}
+
+div.fme-filter dd li.price-container{overflow:visible;}
+
+.price_label_wrapper {overflow: auto}
+.price_from {float:left;}
+.price_to {float:right;}
 
 div.fme-filter a.fme_layered_attribute{padding:0;background:none;}
+div.fme-filter .color a.fme_layered_attribute {
+    width: 100%;
+}
 
 .color {
     clear: none;
     margin: 0 1px;
     display: inline-block;
+    width: 14%;
 }
 
-.color .color_box { width: 25px;
-    height: 25px;
+.color .color_box { 
+    width: 100%;
+    padding-bottom: 100%;
     float: left;
     display: block;
     box-sizing: border-box;
@@ -190,10 +214,10 @@ div.fme-filter a.fme_layered_attribute{padding:0;background:none;}
 
 .color a:hover { color:#09F; text-decoration:none; }
 
-.color span { font-family:Arial; text-align: left; font-size:12px; color:#999; margin-top: -3px; }
+.color span { font-family:Arial; text-align: left; font-size:12px; color:#212121; margin-top: -3px; }
 div.fme-filter dd a:hover { color:#09F; text-decoration:none; }
 div.fme-filter dd a { font-family:Arial; font-size:12px; color:#333; text-decoration:none; }
-.multi_color{background-image:url('img/multi_color_box.png');background-size:100%;}
+.multi_color{background-image:url('img/multi_color_box.png');background-size:cover}
 
 .color .color_box:hover {
     border: 1px solid #aaa;
@@ -201,7 +225,7 @@ div.fme-filter dd a { font-family:Arial; font-size:12px; color:#333; text-decora
 }
 
 .color .fme_layered_attribute_selected .color_box {
-    border: 2px solid red;
+    border: 2px solid black;
 }
 .checkboxattributewrapper{display: inline-block}
 .checkboxattribute {display:none;}
@@ -221,4 +245,9 @@ div.fme-filter div.fme_layered_clear {
     display:inline-block;
     font-weight: normal;
     font-size: 0.8em;
+    float:right;
 }
+
+div.fme-filter a.adj-nav-pad1, div.fme-filter span.adj-nav-pad1 {padding-left:0px;}
+div.fme-filter a.adj-nav-pad2, div.fme-filter span.adj-nav-pad2 {padding-left:10px;}
+div.fme-filter a.adj-nav-pad3, div.fme-filter span.adj-nav-pad3 {padding-left:20px;}
