@@ -51,8 +51,8 @@
         <action method="addCss"><stylesheet>css/FME/fme_layered_nav.css</stylesheet></action>
         <action method="addItem"><type>skin_js</type><name>js/FME/fme_layered_nav.js</name></action>
         
-        <action method="addItem"><type>skin_js</type><name>marketplace/js/selectize.min.js</name></action>
-        <action method="addCss"><stylesheet>marketplace/css/selectize.default.css</stylesheet></action>
+        <action method="addItem"><type>skin_js</type><name>plugins/selectize/selectize.min.js</name></action>
+        <action method="addCss"><stylesheet>plugins/selectize/selectize.default.css</stylesheet></action>
         
         <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-1.10.4.custom.min.js</name></action>
         <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-touch.min.js</name></action>
@@ -72,8 +72,8 @@
         <action method="addCss"><stylesheet>css/FME/fme_layered_nav.css</stylesheet></action>
         <action method="addItem"><type>skin_js</type><name>js/FME/fme_layered_nav.js</name></action>
 
-        <action method="addItem"><type>skin_js</type><name>marketplace/js/selectize.min.js</name></action>
-        <action method="addCss"><stylesheet>marketplace/css/selectize.default.css</stylesheet></action>
+        <action method="addItem"><type>skin_js</type><name>plugins/selectize/selectize.min.js</name></action>
+        <action method="addCss"><stylesheet>plugins/selectize/selectize.default.css</stylesheet></action>
         
         <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-1.10.4.custom.min.js</name></action>
         <action method="addItem"><type>skin_js</type><name>jqueryui/jquery-ui-touch.min.js</name></action>
