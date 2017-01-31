@@ -131,7 +131,8 @@ class FME_Layerednav_Block_Layer_View extends Mage_Catalog_Block_Layer_View {
     protected function _toHtml() {
         $html = parent::_toHtml();
         if (!Mage::app()->getRequest()->isXmlHttpRequest()) {
-            $html = '<div id="catalog-filters">' . $html . '</div>';
+            $html = '<div class="block block-layered-nav" id="block-layered-nav-reference">' . $html . '</div>';
+            $html = '<div id="layered-nav-marker"></div>' . $html;
         }
         return $html;
     }
@@ -140,4 +141,9 @@ class FME_Layerednav_Block_Layer_View extends Mage_Catalog_Block_Layer_View {
         return false;
     }
 
+    public function getIsAjax(){
+        if (Mage::app()->getRequest()->isXmlHttpRequest()) return true;
+
+        return false;
+    }
 }

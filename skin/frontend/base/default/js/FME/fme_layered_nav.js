@@ -59,8 +59,7 @@ function fme_layered_show_products(transport)
         el.update(resp.products.gsub(ajaxUrl, $('fme_layered_url').value));
         el.innerHTML; 
         catalog_toolbar_init();
-
-        $('catalog-filters').update(
+        $('block-layered-nav-reference').update(
                 resp.layer.gsub(
                         ajaxUrl,
                         $('fme_layered_url').value
@@ -420,15 +419,16 @@ function create_price_slider_ui(sKey,from,to,min,max){
             $('price_range_to' + sKey).update(ui.values[1]);
         },
         change: function( event, ui ) {
-            var f = ui.values[0],
-                t = ui.values[1];
-            
-            fme_layered_add_params(sKey, f + ',' + t, true);
+            if (event.originalEvent){
+                var f = ui.values[0],
+                    t = ui.values[1];
+                fme_layered_add_params(sKey, f + ',' + t, true);
 
-            $('price_range_from' + sKey).update(f);
-            $('price_range_to' + sKey).update(t);
+                $('price_range_from' + sKey).update(f);
+                $('price_range_to' + sKey).update(t);
 
-            fme_layered_make_request();
+                fme_layered_make_request();
+            }
         }
 
     });

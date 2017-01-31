@@ -13,7 +13,6 @@
 class FME_Layerednav_CategoryController extends Mage_Core_Controller_Front_Action {
 
     public function viewAction() {
-        die('eek');
         // init category
         $categoryId = (int) $this->getRequest()->getParam('id', false);
         if (!$categoryId) {

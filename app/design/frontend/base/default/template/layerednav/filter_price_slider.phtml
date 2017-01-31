@@ -54,15 +54,9 @@
 <script type="text/javascript">
     <?php  /*?>
     var slider = create_price_slider(<?php echo $width.', '.$firstOffset.', '.$secondOffset.', '.$min.', '.$max.',"'.$this->_filter->getRequestVar()?>"); <?php  */?>
-        console.log(<?php echo $width.', '.$from.', '.$to.', '.$min.', '.$max.',"'.$this->_filter->getRequestVar()?>")
-    jQuery(document).ready( function(){
+   jQuery(document).ready( function(){
         var sliderui = create_price_slider_ui("<?=$this->_filter->getRequestVar()?>",<?= $from ?>,<?= $to ?>,<?= $min ?>, <?= $max ?>);
     });
-window.onresize = function() {
-
-
-
-    };
 </script>
 <?php else:?>
 <?php echo $this->__('Value:')?> 

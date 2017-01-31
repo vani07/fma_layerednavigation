@@ -1,24 +1,18 @@
-
 <?php if ($this->canShowBlock()): $state = $this->getStateInfo() ?>
-    <div class="block block-layered-nav">
         <div class="block-title">
             <strong><span><?php echo $this->__('Refine By') ?></span></strong>
            
         </div>
         <div class="block-content">
-
             <?php echo $this->getStateHtml() ?>
             <?php if ($this->canShowOptions()): ?>
-                <?php
-                
-                ?>
                 <div class="fme-filter">
                     <input type="hidden" id="search_term" value="<?php echo $this->helper('catalogsearch')->getEscapedQueryText();?>"/>
                     <input type="hidden" id="fme_layered_url" value="<?php echo $this->htmlEscape($state[0]) ?>"/>
-                    <input type="hidden" id="fme_layered_params" value="<?php echo $this->htmlEscape($state[1]) ?>"/> 
+                    <input type="hidden" id="fme_layered_params" value="<?php echo $this->htmlEscape($state[1]) ?>"/>
                     <input type="hidden" id="fme_layered_ajax" value="<?php echo $this->htmlEscape($state[2]) ?>"/> 
-                     <p class="block-subtitle block-subtitle--filter ">Filter</p>
-                    <dl id="fme_filters_list" >
+                     <div class="block-subtitle block-subtitle--filter ">Filters</div>
+                    <dl id="fme_filters_list">
                         <?php if ($state[1] AND $this->bNeedClearAll()): ?>
                             <div class="actions fme_layered_clear_all"><a class="fme_layered_clearall" href="<?php echo $this->htmlEscape($this->getClearAllUrl()) ?>"><?php echo $this->__('Clear All Filters') ?></a></div>            
                         <?php endif ?>
@@ -45,33 +39,49 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </dl>
-                    <script type="text/javascript">
-                        decorateDataList('fme_filters_list');
-                        fme_layered_init();
-                    </script>
                 </div>
             <?php endif; ?>
         </div>
         <div class="fme_loading_filters" style="display:none"></div>
-    </div>
 <?php endif; ?>
 
 <script type="text/javascript">
+    decorateDataList('fme_filters_list');
     fme_layered_init();
-    jQuery(document).ready( function($){
-        $('select.fme_layered_attribute_dropdown').each( function(){
-            var select = $(this).selectize();
-            $(this).next().on('click','.item', function(){
-                var selectize = select[0].selectize;
-                selectize.removeItem($(this).data('value'), false); 
+
+    if (typeof(initialized) == 'undefined'){
+        var initialized = true;
+        jQuery(document).ready( function($){
+            $('select.fme_layered_attribute_dropdown').each( function(){
+                var select = $(this).selectize();
+                $(this).next().on('click','.item', function(){
+                    var selectize = select[0].selectize;
+                    selectize.removeItem($(this).data('value'), false); 
+                });
             });
 
+            $('select.fme_layered_attribute_dropdown').change(fme_layered_attribute_dropdown_listener);
+
+            $('#fme_filters_list .attrib-filter').click( function(){
+                $(this).next().siblings('dd').removeClass('showfilters');
+                $(this).next().toggleClass('showfilters');
+            });
+
+            $('.fme_layered_clear_all_mobile').click( function(e){
+                $('#fme_filters_list .fme_layered_clearall').click();
+                return false;
+            })
+
+            <?php if ($this->getIsAjax()): ?>
+                $('.col-main #fme_filters_list').addClass('no-display');
+                $('.col-main .block-subtitle--filter').click( function(){
+                    $(this).toggleClass('active');
+                    $(this).next().toggleClass('no-display')
+                });
+            <?php endif; ?>
+
         });
-
-        $('select.fme_layered_attribute_dropdown').change(fme_layered_attribute_dropdown_listener);
-
-
-    });
+    } 
 </script>
 
 
