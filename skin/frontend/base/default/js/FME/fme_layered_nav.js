@@ -44,6 +44,11 @@ function fme_layered_show_products(transport)
  
     if (resp.products) {
         var ajaxUrl = $('fme_layered_ajax').value;
+
+        //if https, replace url to https
+        if (location.protocol === 'https:') {
+            ajaxUrl = ajaxUrl.replace('http://','https://');
+        }
         if ($('fme_layered_container') == undefined) {
             var c = $$('.col-main')[0];// alert(c.hasChildNodes());
             if (c.hasChildNodes()) {
@@ -143,8 +148,15 @@ function fme_layered_make_request()
         fme_layered_add_params('q',$('search_term').value,false);
     }
 
+    var ajaxUrl = $('fme_layered_ajax').value;
+
+    //if https, replace url to https
+    if (location.protocol === 'https:') {
+        ajaxUrl = ajaxUrl.replace('http://','https://');
+    }
+
     new Ajax.Request(
-            $('fme_layered_ajax').value + '?' + $('fme_layered_params').value,
+            ajaxUrl + '?' + $('fme_layered_params').value,
             {
                 method: 'get',
                 onSuccess: fme_layered_show_products
