@@ -25,10 +25,13 @@ class FME_Layerednav_Block_Layer_View extends Mage_Catalog_Block_Layer_View {
         $_hlp = $this->_helper;
         //Check the Layered Nav position (Search or Catalog pages)
         $ajaxUrl = '';
+
+        $isHttps = Mage::app()->getStore()->isFrontUrlSecure() && Mage::app()->getRequest()->isSecure();
+
         if ($_hlp->isSearch()) {
-            $ajaxUrl = Mage::getUrl('layerednav/front/search');
+            $ajaxUrl = Mage::getUrl('layerednav/front/search',array('_secure' => $isHttps));
         } elseif ($cat = $this->getLayer()->getCurrentCategory()) {
-            $ajaxUrl = Mage::getUrl('layerednav/front/category', array('id' => $cat->getId()));
+            $ajaxUrl = Mage::getUrl('layerednav/front/category', array('id' => $cat->getId(), '_secure' => $isHttps));
         }
 
 
