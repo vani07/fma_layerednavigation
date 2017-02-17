@@ -49,10 +49,11 @@ div.price_slider div.handle { top:3px; width:14px; height:23px; background: tran
 
 }
 
-
 .fme_loading_filters img{
-	left:48%;
-	top:45%;
+	left:50%;
+	top:50%;
+    margin-top:-25px;
+    margin-left:-25px;
 	display:block;
 	position:fixed;
 	z-index:900;
