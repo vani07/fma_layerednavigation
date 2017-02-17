@@ -87,12 +87,18 @@ div.price_slider div.handle { top:3px; width:14px; height:23px; background: tran
     user-select: none;
     margin-bottom: 0;
     font-weight: 800;
+    color:#333;
+    text-transform: uppercase;
 }
 
 div.fme-filter dd {
     padding: 2px 2px 25px;
     border-bottom: solid 1px #E0E0E0;
     margin:0;
+}
+
+div.fme-filter dd .category > a, div.fme-filter dd .category > span {
+    text-transform: uppercase;
 }
 
 .fme-filter dt.fme_layered_dt_selected{}
